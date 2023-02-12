@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+</head>
+<style>
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 500ms;
+    }
+
+    section {
+        width: 90%;
+        margin: 2rem auto;
+        padding: 2rem 2rem;
+        background: linear-gradient(135deg, #ff3333, #39f039, #5b5bfb);
+    }
+
+    body {
+        background: linear-gradient(-135deg, #ff3333b7, #39f039c4, #5b5bfbce);
+    }
+
+    .product {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        grid-auto-flow: repeat(1fr);
+        margin-top: 2rem;
+    }
+
+    .itemBox {
+        box-shadow: 0 0 1rem black;
+        transform-origin: 0 0;
+        overflow: hidden;
+        transition: 500ms;
+    }
+
+    .itemBox:hover img {
+        transform: scale(1.1);
+    }
+
+    .listContainer {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .list {
+        color: rgb(0, 0, 0);
+        text-transform: uppercase;
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        font-size: 1.2rem;
+        transition: 300ms;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 0.5rem;
+    }
+
+    .list.active,
+    .list:hover {
+        color: rgb(255, 255, 255);
+        background-color: #5b5bfb;
+        box-shadow: 0 0 1rem black;
+
+    }
+
+    .previewBox {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: rgb(255, 0, 0);
+        max-width: 700px;
+        box-shadow: 0 0 2rem rgb(255, 255, 255);
+        transition: 500ms;
+        z-index: 2;
+    }
+
+    .previewBox .details,
+    .details span {
+        display: flex;
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-transform: capitalize;
+        background-color: white;
+        justify-content: space-around;
+        position: relative;
+    }
+
+    .previewBox .details .cross {
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        padding: 0.2rem 0.6rem;
+        transform: translate(25%, -29%) rotate(45deg);
+    }
+</style>
+
+<body>
+    <section>
+        <ul class="listContainer">
+            <li class="list active" data-filter="All">All</li>
+            <li class="list" data-filter="mobile">mobile</li>
+            <li class="list" data-filter="camera">camera</li>
+            <li class="list" data-filter="Watch">Watch</li>
+            <li class="list" data-filter="shoe">shoe</li>
+            <li class="list" data-filter="headphone">headphone</li>
+        </ul>
+        <div class="product">
+            <div class="itemBox All mobile"><img src="./gallery Image/canteen.jpg" alt=""></div>
+            <div class="itemBox All camera"><img src="./gallery Image/ce1.jpg" alt=""></div>
+            <div class="itemBox All Watch"><img src="./gallery Image/ce2.jpg" alt=""></div>
+            <div class="itemBox All shoe"><img src="./gallery Image/cf1.jpg" alt=""></div>
+            <div class="itemBox All headphone"><img src="./gallery Image/cf2.jpg" alt=""></div>
+            <div class="itemBox All mobile"><img src="./gallery Image/canteen.jpg" alt=""></div>
+            <div class="itemBox All camera"><img src="./gallery Image/ce1.jpg" alt=""></div>
+            <div class="itemBox All Watch"><img src="./gallery Image/ce2.jpg" alt=""></div>
+            <div class="itemBox All shoe"><img src="./gallery Image/cf1.jpg" alt=""></div>
+            <div class="itemBox All headphone"><img src="./gallery Image/cf2.jpg" alt=""></div>
+            <div class="itemBox All Watch"><img src="./gallery Image/ce2.jpg" alt=""></div>
+            <div class="itemBox All shoe"><img src="./gallery Image/cf1.jpg" alt=""></div>
+            <div class="itemBox All headphone"><img src="./gallery Image/cf2.jpg" alt=""></div>
+            <div class="itemBox All mobile"><img src="./gallery Image/canteen.jpg" alt=""></div>
+            <div class="itemBox All camera"><img src="./gallery Image/ce1.jpg" alt=""></div>
+            <div class="itemBox All Watch"><img src="./gallery Image/ce2.jpg" alt=""></div>
+            <div class="itemBox All shoe"><img src="./gallery Image/cf1.jpg" alt=""></div>
+            <div class="itemBox All headphone"><img src="./gallery Image/cf2.jpg" alt=""></div>
+            <div class="itemBox All Watch"><img src="./gallery Image/ce2.jpg" alt=""></div>
+            <div class="itemBox All shoe"><img src="./gallery Image/cf1.jpg" alt=""></div>
+            <div class="itemBox All headphone"><img src="./gallery Image/cf2.jpg" alt=""></div>
+            <div class="itemBox All mobile"><img src="./gallery Image/canteen.jpg" alt=""></div>
+            <div class="itemBox All camera"><img src="./gallery Image/ce1.jpg" alt=""></div>
+            <div class="itemBox All Watch"><img src="./gallery Image/ce2.jpg" alt=""></div>
+            <div class="itemBox All shoe"><img src="./gallery Image/cf1.jpg" alt=""></div>
+            <div class="itemBox All headphone"><img src="./gallery Image/cf2.jpg" alt=""></div>
+        </div>
+    </section>
+
+    <!-- full Screen previewBox -->
+    <section class="previewBox">
+        <div class="details">
+            <span class="title">Img Category: <p class="type">not defined</p></span>
+            <span class="cross">+</span>
+        </div>
+        <div class="imgBox">
+            <img src="./gallery Image/college.jpg" alt="">
+        </div>
+    </section>
+
+
+
+    <script>
+
+        let listArr = [...document.querySelectorAll('.list')];
+        let product = document.querySelector('.product');
+        let img = product.children;
+
+        listArr.forEach((e) => {
+            e.addEventListener('click', () => {
+                let active = document.querySelector('.active');
+                active.classList.remove('active');
+                e.classList.add('active');
+                let dataVal = e.dataset.filter;
+                console.log(dataVal);
+
+                // function to change the images
+                fillterImg(img, dataVal, 300);
+            });
+        });
+
+
+        function fillterImg(img, dataVal, iterabletime) {
+            Array.from(img).forEach((img) => {
+                if (img.classList.contains(dataVal)) {
+                    img.style.transform = 'scale(1)';
+                    setTimeout(() => {
+                        img.style.display = 'block';
+                    }, iterabletime);
+                } else {
+                    img.style.transform = 'scale(0)';
+                    setTimeout(() => {
+                        img.style.display = 'none';
+                    }, iterabletime);
+                }
+            })
+        };
+
+        // js for preview Box
+        let previewBox = document.querySelector('.previewBox');
+        let crossBtn = previewBox.querySelector('.cross');
+        console.log(crossBtn);
+        crossBtn.addEventListener('click',()=>{
+            previewBox.style.transform = 'translate(-50%, -50%) scale(0)';
+        });
+
+        Array.from(img).forEach((img)=>{
+            img.addEventListener('click',()=>{
+                let requiredSrc = img.children[0].src;
+                previewBox.style.transform = 'translate(-50%, -50%) scale(1)';
+                let imgBox = previewBox.querySelector('.imgBox');
+                let Type = previewBox.querySelector('.type');
+                let prevImg = imgBox.children[0];
+                prevImg.src = requiredSrc;
+                console.log(Type)
+            })
+        })
+
+    </script>
+</body>
+
+</html>
