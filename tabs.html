@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs Using JS</title>
+
+    <style>
+        *,*::before,*::after{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .tabContainer{
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 0.5rem;
+            margin: 1rem 0.5rem;
+        }
+        .tab{
+            border: 2px solid black;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            transition: 200ms;
+        }
+        .tab:hover,
+        .tab.active
+        {
+           background-color: rgb(255, 144, 41);
+           color: white;
+        }
+       
+        .dataContainer{
+            background-color: rgb(255, 144, 41);
+            width: max(200px,80%);
+            padding: 1rem;
+        }
+        /* making all data display none by default */
+        .dataContainer >*{
+            display: none;
+        }
+        .dataContainer >.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul class="tabContainer">
+        <li class="tab " data-filter="reviews">Reviews</li>
+        <li class="tab active" data-filter="description">Description</li>
+        <li class="tab" data-filter="terms">Terms & Conditions</li>
+    </ul>
+
+    <div class="dataContainer ">
+        <div class="reviews ">
+            <h2>Reviews</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid minus repellendus consequuntur iste facere vitae laborum, consectetur nulla nobis eaque dolorum quis sapiente, perferendis temporibus. Possimus et voluptates temporibus consequuntur.</p>
+        </div>
+        <div class="description active">
+            <h2>Description</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid minus repellendus consequuntur iste facere vitae laborum, consectetur nulla nobis eaque dolorum quis sapiente, perferendis temporibus. Possimus et voluptates temporibus consequuntur.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid minus repellendus consequuntur iste facere vitae laborum, consectetur nulla nobis eaque dolorum quis sapiente, perferendis temporibus. Possimus et voluptates temporibus consequuntur.</p>
+        </div>
+        <div class="terms ">
+            <h2>Terms</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid minus repellendus consequuntur iste facere vitae laborum, consectetur nulla nobis eaque dolorum quis sapiente, perferendis temporibus. Possimus et voluptates temporibus consequuntur.</p>
+        </div>
+    </div>
+
+    <script>
+        let tabs = [...document.querySelectorAll('.tab')];
+        let dataContainer = document.querySelector('.dataContainer');
+        let Data = [...dataContainer.children];
+        
+        tabs.forEach((tab)=>{
+            tab.addEventListener('click',()=>{
+                let activeTab = document.querySelector('.tabContainer .active');
+                activeTab.classList.remove('active');
+
+                tab.classList.add('active');
+                let filterVal = tab.dataset.filter
+
+                // filtering the Data
+                filterData(Data,filterVal);
+            })
+        });
+
+        const filterData = (items, filterVal)=>{
+            items.forEach((item)=>{
+                    if(item.classList.contains(filterVal)){
+                        item.classList.add('active');
+                    }else{
+                        item.classList.remove('active');
+
+                    }
+                })
+        }
+    </script>
+</body>
+</html>
